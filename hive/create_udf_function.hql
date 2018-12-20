@@ -1,0 +1,1 @@
+create function countrySearch as 'com.dbocharov.hive.udf.CountryBinarySearcher' using jar 'hdfs://localhost/user/cloudera/libs/hive_udfs.jar',FILE 'hdfs://localhost/user/hive/warehouse/events.db/geodata/000000_0';

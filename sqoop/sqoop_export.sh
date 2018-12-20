@@ -1,0 +1,3 @@
+sqoop export  --connect jdbc:postgresql://10.0.2.2:5432/report --username dbocharov -P --table top_categories --export-dir /user/hive/warehouse/events.db/top_category/000000_0
+sqoop export  --connect jdbc:postgresql://10.0.2.2:5432/report --username dbocharov -P --table top_product_in_each_cat --export-dir /user/hive/warehouse/events.db/top_product/000000_0
+sqoop export  --connect jdbc:postgresql://10.0.2.2:5432/report --username dbocharov -P --table top_country --export-dir /user/hive/warehouse/events.db/top_country/000000_0
