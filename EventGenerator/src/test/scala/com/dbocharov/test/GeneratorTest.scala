@@ -4,7 +4,7 @@ import java.io.{BufferedReader, InputStreamReader}
 import java.net.{ServerSocket, Socket}
 
 import com.dbocharov.generator.Generator
-import org.scalatest.{FunSuite}
+import org.scalatest.FunSuite
 
 class GeneratorTest extends FunSuite {
 
@@ -16,7 +16,7 @@ class GeneratorTest extends FunSuite {
   private var socket: Socket = null
 
   test("Generator testing") {
-    //Init server socket, maybe it should be in "before" method, but it's not working
+    //Init server socket, maybe, should be implemented in "before" method, but it's not working
     while (server == null) {
       try {
         server = new ServerSocket(port)
@@ -32,8 +32,8 @@ class GeneratorTest extends FunSuite {
       Generator.generate(num, host, port)
       socket = server.accept()
       val br = new BufferedReader(new InputStreamReader(socket.getInputStream))
-      br.lines().toArray.foreach(println(_))
-      assert(true)
+      assert(num == br.lines().count()
+      )
     }
     finally {
       try {

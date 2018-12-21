@@ -1,6 +1,6 @@
 package com.dbocharov.generator
 
-import java.io.{PrintWriter}
+import java.io.PrintWriter
 import java.net.Socket
 
 import com.dbocharov.utils.Dictionary
@@ -48,19 +48,24 @@ object Generator {
     }
 
   }
+
   //First arg should mean amount events, second - host, 3 - port
   def main(args: Array[String]): Unit = {
     val num = if (args.length > 0) try {
       Integer.parseInt(args(0))
     } catch {
-      case e: Throwable => {println(s"${Dictionary.ERROR_PARSING_MESSAGE}, cause:${e.getCause}");default_num}
+      case e: Throwable => {
+        println(s"${Dictionary.ERROR_PARSING_MESSAGE}, cause:${e.getCause}"); default_num
+      }
     } else default_num
     val host = if (args.length > 1) args(1) else default_host
     val port = if (args.length > 2) try {
       Integer.parseInt(args(2))
     } catch {
-      case e: Throwable => {println(s"${Dictionary.ERROR_PARSING_MESSAGE}, cause:${e.getCause}");default_port}
+      case e: Throwable => {
+        println(s"${Dictionary.ERROR_PARSING_MESSAGE}, cause:${e.getCause}"); default_port
+      }
     } else default_port
-    for(_ <- 1 to 10) generate(num, host, port)
+    generate(num, host, port)
   }
 }
